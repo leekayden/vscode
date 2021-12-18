@@ -156,7 +156,7 @@ stages:
         jobs:
           - ${{ if eq(parameters.VSCODE_BUILD_WIN32, true) }}:
               - job: Windows
-                timeoutInMinutes: 120
+                timeoutInMinutes: 240
                 variables:
                   VSCODE_ARCH: x64
                 steps:
@@ -164,7 +164,7 @@ stages:
 
           - ${{ if and(eq(variables['VSCODE_CIBUILD'], false), eq(parameters.VSCODE_BUILD_WIN32_32BIT, true)) }}:
               - job: Windows32
-                timeoutInMinutes: 120
+                timeoutInMinutes: 240
                 variables:
                   VSCODE_ARCH: ia32
                 steps:
@@ -187,6 +187,7 @@ stages:
         jobs:
           - ${{ if eq(parameters.VSCODE_BUILD_LINUX, true) }}:
               - job: Linux
+                timeoutInMinutes: 240
                 container: vscode-x64
                 variables:
                   VSCODE_ARCH: x64
@@ -275,7 +276,7 @@ stages:
         jobs:
           - ${{ if eq(parameters.VSCODE_BUILD_MACOS, true) }}:
               - job: macOS
-                timeoutInMinutes: 90
+                timeoutInMinutes: 240
                 variables:
                   VSCODE_ARCH: x64
                 steps:
@@ -312,7 +313,7 @@ stages:
                 dependsOn:
                   - macOS
                   - macOSARM64
-                timeoutInMinutes: 90
+                timeoutInMinutes: 240
                 variables:
                   VSCODE_ARCH: universal
                 steps:
