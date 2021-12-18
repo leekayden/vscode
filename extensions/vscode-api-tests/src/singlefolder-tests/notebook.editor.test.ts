@@ -44,7 +44,7 @@ suite('Notebook Editor', function () {
 		testDisposables.length = 0;
 	});
 
-	test('showNotebookDocment', async function () {
+	test.skip('showNotebookDocument', async function () { // TODO@rebornix https://github.com/microsoft/vscode/issues/139078
 
 		const notebookDocumentsFromOnDidOpen = new Set<vscode.NotebookDocument>();
 		const sub = vscode.workspace.onDidOpenNotebookDocument(e => {
