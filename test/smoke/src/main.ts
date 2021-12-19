@@ -60,6 +60,7 @@ const opts = minimist(args, {
 	electronArgs?: string
 };
 
+const now = Date.now();
 const logger = createLogger();
 
 function createLogger(): Logger {
@@ -71,7 +72,7 @@ function createLogger(): Logger {
 	}
 
 	// Always log to log file
-	const logPath = path.join(repoPath, '.build', 'logs', opts.web ? 'smoke-tests-browser' : opts.remote ? 'smoke-tests-remote' : 'smoke-tests');
+	const logPath = path.join(repoPath, '.build', 'logs', opts.web ? 'smoke-tests-browser' : opts.remote ? 'smoke-tests-remote' : 'smoke-tests', String(now));
 	mkdirp.sync(logPath);
 	loggers.push(new FileLogger(path.join(logPath, 'smoke-test-runner.log')));
 

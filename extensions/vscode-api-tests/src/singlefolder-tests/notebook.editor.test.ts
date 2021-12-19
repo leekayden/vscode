@@ -86,7 +86,7 @@ suite('Notebook Editor', function () {
 		assert.strictEqual(editor.document.uri.toString(), resource.toString());
 	});
 
-	test('Active/Visible Editor', async function () {
+	test.skip('Active/Visible Editor', async function () { // TODO@rebornix https://github.com/microsoft/vscode/issues/139078
 		const firstEditorOpen = utils.asPromise(vscode.window.onDidChangeActiveNotebookEditor);
 		const resource = await utils.createRandomFile(undefined, undefined, '.nbdtest');
 		const firstEditor = await vscode.window.showNotebookDocument(resource);

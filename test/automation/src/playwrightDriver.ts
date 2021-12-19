@@ -19,7 +19,7 @@ const width = 1200;
 const height = 800;
 
 const root = join(__dirname, '..', '..', '..');
-const logsPath = join(root, '.build', 'logs', 'smoke-tests-browser');
+const logsPath = join(root, '.build', 'logs', 'smoke-tests-browser', String(Date.now()));
 
 const vscodeToPlaywrightKey: { [key: string]: string } = {
 	cmd: 'Meta',

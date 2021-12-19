@@ -17,11 +17,12 @@ import { Logger, measureAndLog } from './logger';
 import type { LaunchOptions } from './code';
 
 const repoPath = path.join(__dirname, '../../..');
+const now = Date.now();
 
 export async function launch(options: LaunchOptions): Promise<{ electronProcess: ChildProcess, client: IDisposable, driver: IDriver, kill: () => Promise<void> }> {
 	const { codePath, workspacePath, extensionsPath, userDataDir, remote, logger, verbose, extraArgs } = options;
 	const env = { ...process.env };
-	const logsPath = path.join(repoPath, '.build', 'logs', remote ? 'smoke-tests-remote' : 'smoke-tests');
+	const logsPath = path.join(repoPath, '.build', 'logs', remote ? 'smoke-tests-remote' : 'smoke-tests', String(now));
 	const outPath = codePath ? getBuildOutPath(codePath) : getDevOutPath();
 
 	const driverIPCHandle = await measureAndLog(createDriverHandle(), 'createDriverHandle', logger);
